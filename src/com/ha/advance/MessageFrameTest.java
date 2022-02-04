@@ -1,4 +1,4 @@
-package com.ha.openemr;
+package com.ha.advance;
 
 import java.time.Duration;
 
@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.Select;
 
 
 
-public class MessageTest {
+public class MessageFrameTest {
 
 	public static void main(String[] args) {
 
@@ -37,9 +37,24 @@ public class MessageTest {
 		
 		String url=driver.getCurrentUrl();
 		System.out.println(url);
-	
 		
-		driver.quit();
+		driver.findElement(By.xpath("//div[text()='Messages']")).click();
+		
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@name='msg']")));
+		
+		driver.findElement(By.xpath("//a[text()='Add New']")).click();
+		
+		driver.findElement(By.id("note")).sendKeys("hello");
+		
+		//select type
+		//select status 
+		//select userid 
+		//click send message
+		
+		driver.switchTo().defaultContent();
+		
+		
+//		driver.quit();
 		   
 		
 	}
